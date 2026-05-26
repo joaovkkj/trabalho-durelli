@@ -92,7 +92,7 @@ int gerarNumero(int nivel, unsigned long long &semente)
     return aleatorio(4096, semente) + 1;
 }
 
-int main()
+void iniciarQuiz()
 {
     int pontos = 0;
 
@@ -164,5 +164,4 @@ int main()
     cout << "Pontuacao final: "
          << pontos << "\n";
 
-    return 0;
 }
