@@ -71,13 +71,11 @@ Modo Batch
 
 O programa consegue ler várias conversões automaticamente através do arquivo:
 
-txt
 entrada.csv
-`
+
 
 E gera automaticamente:
 
-txt
 saida.csv
 
 
