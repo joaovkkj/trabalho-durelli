@@ -14,13 +14,10 @@ using namespace std;
 
 void executarBatch(){
 
-    // Arquivo de entrada
     ifstream entrada("entrada.csv");
 
-    // Arquivo de saída
     ofstream saida("saida.csv");
 
-    // Verifica se abriu corretamente
     if(!entrada){
 
         cout << "ERRO ao abrir entrada.csv!"
@@ -33,7 +30,6 @@ void executarBatch(){
     string origem;
     string destino;
 
-    // Lê linha por linha
     while(
 
         getline(entrada, valor, ';') &&
@@ -44,11 +40,17 @@ void executarBatch(){
 
         string resultado = "";
 
+        // Remove possível \r do Windows
+        if(destino[destino.length() - 1] == '\r'){
+
+            destino.erase(destino.length() - 1);
+        }
+
         // ##############################
         // DECIMAL -> BINARIO
         // ##############################
 
-        if(origem == "DEC" && destino == "BIN"){
+        if(origem == "10" && destino == "2"){
 
             resultado =
             decimalParaBinario(stoi(valor));
@@ -58,17 +60,17 @@ void executarBatch(){
         // DECIMAL -> OCTAL
         // ##############################
 
-        else if(origem == "DEC" && destino == "OCT"){
+        else if(origem == "10" && destino == "8"){
 
             resultado =
             decimalParaOctal(stoi(valor));
         }
 
         // ##############################
-        // DECIMAL -> HEXA
+        // DECIMAL -> HEXADECIMAL
         // ##############################
 
-        else if(origem == "DEC" && destino == "HEX"){
+        else if(origem == "10" && destino == "16"){
 
             resultado =
             decimalParaHexa(stoi(valor));
@@ -78,7 +80,7 @@ void executarBatch(){
         // BINARIO -> DECIMAL
         // ##############################
 
-        else if(origem == "BIN" && destino == "DEC"){
+        else if(origem == "2" && destino == "10"){
 
             if(validarBinario(valor)){
 
@@ -95,7 +97,7 @@ void executarBatch(){
         // OCTAL -> DECIMAL
         // ##############################
 
-        else if(origem == "OCT" && destino == "DEC"){
+        else if(origem == "8" && destino == "10"){
 
             if(validarOctal(valor)){
 
@@ -109,10 +111,10 @@ void executarBatch(){
         }
 
         // ##############################
-        // HEXA -> DECIMAL
+        // HEXADECIMAL -> DECIMAL
         // ##############################
 
-        else if(origem == "HEX" && destino == "DEC"){
+        else if(origem == "16" && destino == "10"){
 
             if(validarHexa(valor)){
 
@@ -129,60 +131,102 @@ void executarBatch(){
         // BINARIO -> OCTAL
         // ##############################
 
-        else if(origem == "BIN" && destino == "OCT"){
+        else if(origem == "2" && destino == "8"){
 
-            resultado =
-            binarioParaOctal(valor);
+            if(validarBinario(valor)){
+
+                resultado =
+                binarioParaOctal(valor);
+            }
+            else{
+
+                resultado = "ERRO";
+            }
         }
 
         // ##############################
-        // BINARIO -> HEXA
+        // BINARIO -> HEXADECIMAL
         // ##############################
 
-        else if(origem == "BIN" && destino == "HEX"){
+        else if(origem == "2" && destino == "16"){
 
-            resultado =
-            binarioParaHexa(valor);
+            if(validarBinario(valor)){
+
+                resultado =
+                binarioParaHexa(valor);
+            }
+            else{
+
+                resultado = "ERRO";
+            }
         }
 
         // ##############################
         // OCTAL -> BINARIO
         // ##############################
 
-        else if(origem == "OCT" && destino == "BIN"){
+        else if(origem == "8" && destino == "2"){
 
-            resultado =
-            octalParaBinario(valor);
+            if(validarOctal(valor)){
+
+                resultado =
+                octalParaBinario(valor);
+            }
+            else{
+
+                resultado = "ERRO";
+            }
         }
 
         // ##############################
-        // HEXA -> BINARIO
+        // HEXADECIMAL -> BINARIO
         // ##############################
 
-        else if(origem == "HEX" && destino == "BIN"){
+        else if(origem == "16" && destino == "2"){
 
-            resultado =
-            hexaParaBinario(valor);
+            if(validarHexa(valor)){
+
+                resultado =
+                hexaParaBinario(valor);
+            }
+            else{
+
+                resultado = "ERRO";
+            }
         }
 
         // ##############################
-        // OCTAL -> HEXA
+        // OCTAL -> HEXADECIMAL
         // ##############################
 
-        else if(origem == "OCT" && destino == "HEX"){
+        else if(origem == "8" && destino == "16"){
 
-            resultado =
-            octalParaHexa(valor);
+            if(validarOctal(valor)){
+
+                resultado =
+                octalParaHexa(valor);
+            }
+            else{
+
+                resultado = "ERRO";
+            }
         }
 
         // ##############################
-        // HEXA -> OCTAL
+        // HEXADECIMAL -> OCTAL
         // ##############################
 
-        else if(origem == "HEX" && destino == "OCT"){
+        else if(origem == "16" && destino == "8"){
 
-            resultado =
-            hexaParaOctal(valor);
+            if(validarHexa(valor)){
+
+                resultado =
+                hexaParaOctal(valor);
+            }
+            else{
+
+                resultado = "ERRO";
+            }
         }
 
         // ##############################
@@ -194,7 +238,6 @@ void executarBatch(){
             resultado = "CONVERSAO INVALIDA";
         }
 
-        // Escreve no arquivo de saída
         saida
             << valor << ";"
             << origem << ";"
