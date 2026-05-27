@@ -6,7 +6,7 @@
 #include "validacao.h"
 #include "passoapasso.h"
 #include "batch.h"
-//#include "quiz.h"
+#include "quiz.h"
 
 using namespace std;
 
@@ -58,64 +58,35 @@ int main(){
         cout << endl;
         cout << "##### CONVERSOR #####" << endl << endl;
 
-
-        // ##############################
-        // DECIMAL
-        // ##############################
-
         cout << "=== DECIMAL ===" << endl;
-
         cout << "1 - Decimal para Binario" << endl;
         cout << "2 - Decimal para Octal" << endl;
         cout << "3 - Decimal para Hexadecimal" << endl;
 
         cout << endl;
 
-
-        // ##############################
-        // BINARIO
-        // ##############################
-
         cout << "=== BINARIO ===" << endl;
-
         cout << "4 - Binario para Decimal" << endl;
         cout << "5 - Binario para Octal" << endl;
         cout << "6 - Binario para Hexadecimal" << endl;
 
         cout << endl;
 
-
-        // ##############################
-        // OCTAL
-        // ##############################
-
         cout << "=== OCTAL ===" << endl;
-
         cout << "7 - Octal para Decimal" << endl;
         cout << "8 - Octal para Binario" << endl;
         cout << "9 - Octal para Hexadecimal" << endl;
 
         cout << endl;
 
-
-        // ##############################
-        // HEXADECIMAL
-        // ##############################
-
         cout << "=== HEXADECIMAL ===" << endl;
-
         cout << "10 - Hexadecimal para Decimal" << endl;
         cout << "11 - Hexadecimal para Binario" << endl;
         cout << "12 - Hexadecimal para Octal" << endl;
 
         cout << endl;
 
-        // ##############################
-        // EXTRAS
-        // ##############################
-
         cout << "=== EXTRAS ===" << endl;
-
         cout << "13 - Calculadora de Maximos" << endl;
         cout << "14 - Modo Batch CSV" << endl;
         cout << "15 - Modo Quiz" << endl;
@@ -128,9 +99,6 @@ int main(){
 
         switch(opcao){
 
-            // ##############################
-            // DECIMAL -> BINARIO
-            // ##############################
             case 1:{
 
                 string entrada;
@@ -167,11 +135,7 @@ int main(){
                 break;
             }
 
-            // ##############################
-            // DECIMAL -> OCTAL
-            // ##############################
             case 2:{
-
 
                 string entrada;
 
@@ -207,11 +171,7 @@ int main(){
                 break;
             }
 
-            // ##############################
-            // DECIMAL -> HEXADECIMAL
-            // ##############################
             case 3:{
-
 
                 string entrada;
 
@@ -247,325 +207,7 @@ int main(){
                 break;
             }
 
-            // ##############################
-            // BINARIO -> DECIMAL
-            // ##############################
-            case 4:{
-
-
-                string bin;
-
-                cout << "Digite um numero binario: ";
-                cin >> bin;
-
-                bin = trocarVirgula(bin);
-
-                int passo = escolherPasso();
-
-                if(validarBinario(bin)){
-
-                    if(possuiPonto(bin)){
-
-                        cout << "Decimal: "
-                             << binarioFracionarioParaDecimal(bin)
-                             << endl;
-                    }
-                    else{
-
-                        if(passo == 1){
-
-                            mostrarSomatorioBinario(bin);
-                        }
-
-                        cout << "Decimal: "
-                             << binarioParaDecimal(bin)
-                             << endl;
-                    }
-                }
-                else{
-
-                    cout << "ERRO: binario invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // BINARIO -> OCTAL
-            // ##############################
-            case 5:{
-
-
-                string bin;
-
-                cout << "Digite um numero binario: ";
-                cin >> bin;
-
-                bin = trocarVirgula(bin);
-
-                int passo = escolherPasso();
-
-                if(validarBinario(bin)){
-
-                    if(passo == 1){
-
-                        mostrarAgrupamentoOctal(bin);
-                    }
-
-                    cout << "Octal: "
-                         << binarioParaOctal(bin)
-                         << endl;
-                }
-                else{
-
-                    cout << "ERRO: binario invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // BINARIO -> HEXADECIMAL
-            // ##############################
-            case 6:{
-
-
-                string bin;
-
-                cout << "Digite um numero binario: ";
-                cin >> bin;
-
-                bin = trocarVirgula(bin);
-
-                int passo = escolherPasso();
-
-                if(validarBinario(bin)){
-
-                    if(passo == 1){
-
-                        mostrarAgrupamentoHexa(bin);
-                    }
-
-                    cout << "Hexadecimal: "
-                         << binarioParaHexa(bin)
-                         << endl;
-                }
-                else{
-
-                    cout << "ERRO: binario invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // OCTAL -> DECIMAL
-            // ##############################
-            case 7:{
-
-
-                string oct;
-
-                cout << "Digite um numero octal: ";
-                cin >> oct;
-
-                oct = trocarVirgula(oct);
-
-                int passo = escolherPasso();
-
-                if(validarOctal(oct)){
-
-                    if(possuiPonto(oct)){
-
-                        cout << "Decimal: "
-                             << octalFracionarioParaDecimal(oct)
-                             << endl;
-                    }
-                    else{
-
-                        if(passo == 1){
-
-                            mostrarSomatorioOctal(oct);
-                        }
-
-                        cout << "Decimal: "
-                             << octalParaDecimal(oct)
-                             << endl;
-                    }
-                }
-                else{
-
-                    cout << "ERRO: octal invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // OCTAL -> BINARIO
-            // ##############################
-            case 8:{
-
-
-                string oct;
-
-                cout << "Digite um numero octal: ";
-                cin >> oct;
-
-                oct = trocarVirgula(oct);
-
-                if(validarOctal(oct)){
-
-                    cout << "Binario: "
-                         << octalParaBinario(oct)
-                         << endl;
-                }
-                else{
-
-                    cout << "ERRO: octal invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // OCTAL -> HEXADECIMAL
-            // ##############################
-            case 9:{
-
-
-                string oct;
-
-                cout << "Digite um numero octal: ";
-                cin >> oct;
-
-                oct = trocarVirgula(oct);
-
-                if(validarOctal(oct)){
-
-                    cout << "Hexadecimal: "
-                         << octalParaHexa(oct)
-                         << endl;
-                }
-                else{
-
-                    cout << "ERRO: octal invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // HEXADECIMAL -> DECIMAL
-            // ##############################
-            case 10:{
-
-
-                string hex;
-
-                cout << "Digite um numero hexadecimal: ";
-                cin >> hex;
-
-                hex = trocarVirgula(hex);
-
-                int passo = escolherPasso();
-
-                if(validarHexa(hex)){
-
-                    if(possuiPonto(hex)){
-
-                        cout << "Decimal: "
-                             << hexaFracionarioParaDecimal(hex)
-                             << endl;
-                    }
-                    else{
-
-                        if(passo == 1){
-
-                            mostrarSomatorioHexa(hex);
-                        }
-
-                        cout << "Decimal: "
-                             << hexaParaDecimal(hex)
-                             << endl;
-                    }
-                }
-                else{
-
-                    cout << "ERRO: hexadecimal invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // HEXADECIMAL -> BINARIO
-            // ##############################
-            case 11:{
-
-
-                string hex;
-
-                cout << "Digite um numero hexadecimal: ";
-                cin >> hex;
-
-                hex = trocarVirgula(hex);
-
-                if(validarHexa(hex)){
-
-                    cout << "Binario: "
-                         << hexaParaBinario(hex)
-                         << endl;
-                }
-                else{
-
-                    cout << "ERRO: hexadecimal invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // HEXADECIMAL -> OCTAL
-            // ##############################
-            case 12:{
-
-
-                string hex;
-
-                cout << "Digite um numero hexadecimal: ";
-                cin >> hex;
-
-                hex = trocarVirgula(hex);
-
-                if(validarHexa(hex)){
-
-                    cout << "Octal: "
-                         << hexaParaOctal(hex)
-                         << endl;
-                }
-                else{
-
-                    cout << "ERRO: hexadecimal invalido!"
-                         << endl;
-                }
-
-                break;
-            }
-
-            // ##############################
-            // CALCULADORA DE MAXIMOS
-            // ##############################
             case 13:{
-
 
                 int k;
 
@@ -595,9 +237,6 @@ int main(){
                 break;
             }
 
-            // ##############################
-            // MODO BATCH
-            // ##############################
             case 14:{
 
                 executarBatch();
@@ -605,19 +244,13 @@ int main(){
                 break;
             }
 
-            // ##############################
-            // MODO QUIZ
-            // ##############################
-          /*  case 15:{
+            case 15:{
 
                 iniciarQuiz();
 
                 break;
             }
 
-            // ##############################
-            // OPCAO INVALIDA
-            // ##############################
             default:{
 
                 if(opcao != 0){
@@ -626,9 +259,9 @@ int main(){
                          << endl;
                 }
             }
-        */}
+        }
 
     }while(opcao != 0);
 
     return 0;
-}
+}   
