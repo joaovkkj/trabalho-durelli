@@ -260,6 +260,11 @@ Testes inválidos
 
  Observações finais
 
+Vídeo de demonstração :
+
+https://drive.google.com/drive/u/0/folders/1leAvy-SGtQm60hhqp3KhDt1rePRv0Ff4
+
+
 Projeto desenvolvido para praticar:
 
  estruturas de decisão;
